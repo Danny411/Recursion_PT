@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Recursion Debugger</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero panel">
+            <div class="hero-copy">
+                <span class="badge">EDU BASED</span>
+                <h1>Visual Recursion Debugger</h1>
+                <p>Learn recursion through live execution tracing, call stack visualization, and step-by-step debugging.</p>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat"><strong>5</strong><span>Examples</span></div>
+                <div class="stat"><strong>Live</strong><span>Debugger View</span></div>
+                <div class="stat"><strong>Clean</strong><span>UI Controls</span></div>
+            </div>
+        </section>
+
+        <section class="dashboard">
+            <aside class="panel sidebar">
+                <h2>Controls</h2>
+                <p class="hint">Select a recursive example, provide values, then run the visualization.</p>
+
+                <div class="control-group">
+                    <label for="exampleSelect">Select Example</label>
+                    <select id="exampleSelect">
+                        <option value="factorial">Factorial</option>
+                        <option value="fibonacci">Fibonacci</option>
+                        <option value="sum">Sum of Digits</option>
+                        <option value="power">Power</option>
+                        <option value="binarySearch">Binary Search</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="inputValue">Primary Input</label>
+                    <input type="number" id="inputValue" placeholder="Enter a number" min="0">
+                </div>
+
+                <div class="control-group" id="secondaryInputWrap">
+                    <label for="secondaryInput">Secondary Input</label>
+                    <input type="number" id="secondaryInput" placeholder="Enter second value" min="0">
+                </div>
+
+                <div class="control-group">
+                    <label for="speedRange">Animation Speed</label>
+                    <input type="range" id="speedRange" min="200" max="1500" value="700" step="100">
+                    <div class="range-labels">
+                        <span>Fast</span>
+                        <span id="speedValue">700 ms</span>
+                        <span>Slow</span>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" onclick="runVisualization()">Run Visualization</button>
+                    <button type="button" class="secondary" onclick="resetVisualization()">Reset</button>
+                </div>
+
+                <div class="info-card">
+                    <h3>How it works</h3>
+                    <ul>
+                        <li>Calls are added to the stack live.</li>
+                        <li>The panes auto-follow the latest step.</li>
+                        <li>You can slow down or speed up the animation.</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <section class="content-grid">
+                <article class="panel">
+                    <div class="panel-title">
+                        <h2>Execution Steps</h2>
+                        <span class="chip">Trace</span>
+                    </div>
+
+                    <div class="step-bar-wrap">
+                        <div class="step-bar">
+                            <div id="stepProgress" class="step-progress"></div>
+                        </div>
+                        <div id="stepLabel" class="step-label">Ready</div>
+                    </div>
+
+                    <div id="execution" class="trace-box"></div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-title">
+                        <h2>Call Stack</h2>
+                        <span class="chip">Live</span>
+                    </div>
+                    <div id="stack" class="stack-box"></div>
+                </article>
+
+                <article class="panel result-panel">
+                    <div class="panel-title">
+                        <h2>Final Result</h2>
+                        <span class="chip success">Output</span>
+                    </div>
+                    <div id="result" class="result-box"></div>
+                </article>
+            </section>
+        </section>
+    </main>
+
+    <script src="Script.js" defer></script>
+</body>
+</html>

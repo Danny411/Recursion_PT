@@ -1,0 +1,14 @@
+{
+  "name": "recursion-visualizer",
+  "version": "1.0.0",
+  "description": "Visual recursion debugger for novice programmers",
+  "main": "Server/server.js",
+  "scripts": {
+    "start": "node Server/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0"
+  }
+}
