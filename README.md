@@ -47,10 +47,33 @@ Recursion_PT/
    ```bash
    npm install
    ```
-4. Make sure your database is running.
-5. Import the schema from `Database/schema.sql` into MariaDB.
+4. Create a local `.env` file with your database credentials. See `.env.example` for the expected format.
+5. Make sure your database is running.
+6. Import the schema from `Database/schema.sql` into MariaDB.
 
 ## Database Setup
+
+The project uses environment variables instead of hardcoded passwords. Do not commit your `.env` file to GitHub.
+
+If you prefer a safer database account, create a dedicated user instead of using `root`:
+
+```sql
+CREATE DATABASE recursion_visualizer;
+CREATE USER 'recursion_user'@'localhost' IDENTIFIED BY 'YourStrongPassword';
+GRANT ALL PRIVILEGES ON recursion_visualizer.* TO 'recursion_user'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+Then update your local `.env` file like this:
+
+```text
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=recursion_user
+DB_PASSWORD=YourStrongPassword
+DB_NAME=recursion_visualizer
+```
+
 
 Create the database and table using the SQL file in the `Database` folder.
 
