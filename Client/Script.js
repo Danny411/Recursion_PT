@@ -203,7 +203,7 @@ async function binarySearch(arr, target, left, right) {
 
 async function logExecution(example, inputValue, result) {
     try {
-        await fetch('http://localhost:5000/save-log', {
+        const response = await fetch('/save-log', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -212,6 +212,10 @@ async function logExecution(example, inputValue, result) {
                 result: String(result)
             })
         });
+
+        if (!response.ok) {
+            console.error('Logging failed: server returned', response.status, response.statusText);
+        }
     } catch (error) {
         console.error('Logging failed:', error);
     }
